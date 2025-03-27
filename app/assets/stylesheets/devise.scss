@@ -1,0 +1,115 @@
+/* フォーム全体のスタイル */
+.signup-form-wrapper ,.edit-form-wrapper, .login-form-wrapper {
+  min-height: 90vh;
+}
+
+.signup-form, .edit-form, .login-form {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 300px;
+}
+
+/* 見出しのスタイル */
+.signup-heading, .edit-heading, .login-heading {
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+  margin-top: 80px;
+}
+
+/* フォームフィールドのラベル */
+.label {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* 入力フィールドのスタイル */
+.input-field {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* 入力フィールドにフォーカスしたときのスタイル */
+.input-field:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* パスワード最小文字数のエラーメッセージ */
+.password-min-length {
+  font-size: 12px;
+  color: #ff6347;
+  display: block;
+  margin-top: 5px;
+}
+
+/* フォームのエラーメッセージ */
+.error-messages {
+  color: #ff6347;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* サブミットボタンのスタイル */
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* サブミットボタンにホバーしたときのスタイル */
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Deviseのリンクのスタイル */
+.devise-links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.devise-links a {
+  color: #007bff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.devise-links a:hover {
+  text-decoration: underline;
+}
+
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.remember-me-checkbox {
+  margin-right: 8px;
+}
+
+.remember-me-label {
+  font-size: 14px;
+  color: #555;
+}
+

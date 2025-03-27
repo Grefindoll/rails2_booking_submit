@@ -1,0 +1,45 @@
+<div class="all-rooms-container">
+  <h2 class="all-rooms-title">施設一覧</h2>
+
+  <div class="rooms-index-search-top">
+    <%= search_form_for @q, url: rooms_path, method: :get do |f| %>
+    <div class="rooms-index-search-field">
+      <%= f.search_field :address_cont, placeholder: "エリア名で検索", class: "top-rooms-search-input" %>
+    </div>
+    <div class="rooms-index-search-field">
+      <%= f.search_field :description_or_name_cont, placeholder: "フリーワードで検索（ホテル名・説明文）", class: "top-rooms-search-input" %>
+    </div>
+    <div class="rooms-index-search-field">
+      <%= f.submit "検索" , class: "top-rooms-search-btn" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="rooms-grid">
+    <% @rooms.each do |room| %>
+      <div class="room-item">
+        <div class="room-image-wrapper">
+          <%= link_to room_path(room) do %>
+            <% if room.room_image.attached? %>
+              <%= image_tag room.room_image, class: "room-image-index" %>
+            <% else %>
+              <%= image_tag "default-image.png", class: "room-image-index" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="room-info">
+          <h3 class="room-name"><%= link_to room.name, room_path(room) %></h3>
+          <p class="room-description"><%= room.description %></p>
+          <p>住所：<%= room.address %></p>
+          <p>宿泊料金：<%= number_with_delimiter(room.price_per_night) %></p>
+          <p>作成日：<%= l(room.created_at, format: :simple_datetime) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="new-room-link">
+    <%= link_to '新しい施設を投稿', new_room_path, class: "btn-new-room" %>
+  </div>
+</div>

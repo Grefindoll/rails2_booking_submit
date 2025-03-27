@@ -1,0 +1,18 @@
+ja:
+  time:
+    formats:
+      standard: "%Y年%m月%d日"
+      simple: "%Y/%m/%d"
+      simple_datetime: "%Y/%m/%d %H:%M"
+      only_time: "%H:%M:%S"
+      jp_datetime: "%Y年%m月%d日 %H時%M分%S秒"
+      with_weekday: "%Y年%m月%d日(%a)"
+
+  activerecord:
+    attributes:
+      user:
+        name: "名前"  # 「Name」→「名前」に変換
+
+  errors:
+    messages:
+      blank: "を入力してください"  # オプション: エラーメッセージの定型文を変更

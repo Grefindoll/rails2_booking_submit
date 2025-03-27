@@ -1,16 +1,101 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookingSubmit</title>
+    <title>Booking2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
   </head>
 
   <body>
-    <%= yield %>
+    <header class="header">
+      <nav class="navbar">
+        <!-- ロゴは常に表示 -->
+        <div>
+          <%= link_to root_path, class: "logo-link" do %>
+            <%= image_tag("logo.png", alt: "ロゴ", class: "header-logo") %>
+          <% end %>
+        </div>
+        
+    
+        <!-- ログイン状態に応じて表示する内容 -->
+        <div class="navbar-right">
+          <ul class="navbar-list">
+            <% if user_signed_in? %>
+              <% if current_user.profile_image.attached? %>
+                <li class="navbar-item navbar-image">             
+                <%= image_tag current_user.profile_image %>
+                </li>
+              <% end %>
+              
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  <li class="navbar-item">
+                    <%= link_to "#{current_user.name}さん", root_path, class: "nav-user-name" %>
+                  </li>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= link_to "施設の新規登録", new_room_path, class: "nasi" %>
+                    </li>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= link_to "予約済み一覧", my_reservations_path, class: "nasi" %>
+                    </li>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= link_to "登録済み一覧", my_rooms_path, class: "nasi" %>
+                    </li>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= link_to "アカウントの編集", edit_user_registration_path, class: "nasi" %>
+                    </li>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= link_to "プロフィールの詳細", user_path(current_user), class: "nasi" %>
+                    </li>
+                  </a>
+                  <a class="dropdown-item" href="#">
+                    <li class="navbar-item">
+                      <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-button" %>
+                    </li>
+                  </a>
+                </div>
+              </div>
+              
+            <% else %>
+              <li class="navbar-item">
+                <%= link_to "ログイン", new_user_session_path, class: "login-link" %>
+              </li>
+              <li class="navbar-item">
+                <%= link_to "新規登録", new_user_registration_path, class: "signup-link" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <%= link_to root_path, class: "logo-link" do %>
+        <%= image_tag("logo.png", alt: "ロゴ", class: "header-logo") %>
+      <% end %>
+      <p>Copyright © Potepan Share 2025 All rights reserved</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f23f1459a6.js" crossorigin="anonymous"></script>
   </body>
 </html>

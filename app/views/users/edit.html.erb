@@ -1,0 +1,24 @@
+<h2 class="form-title">プロフィールの編集</h2>
+
+<%= form_with model: @user, class: "profile-edit-form" do |f| %>
+
+  <div class="form-group">
+    <%= f.label :profile_image, "プロフィール画像", class: "form-label" %>
+    <%= f.file_field :profile_image, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "名前", class: "form-label" %>
+    <%= f.text_field :name, class: "form-input" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :bio, "自己紹介", class: "form-label" %>
+    <%= f.text_area :bio, rows: 10, class: "form-input" %>
+  </div>
+
+  <div class="form-submit">
+    <%= f.submit "登録する", class: "submit-button" %>
+  </div>
+
+<% end %>

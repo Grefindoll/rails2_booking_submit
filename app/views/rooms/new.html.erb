@@ -1,0 +1,55 @@
+<!-- app/views/rooms/new.html.erb -->
+
+
+<div class="room-new-container">
+  <h2>新しい施設を作成</h2>
+
+  <%= form_with model: @room, local: true, html: { multipart: true } do |f| %>
+  <% if @room.errors.any? %>
+    <div class="error_explanation" id="error_explanation">
+      <h3><%= pluralize(@room.errors.count, "件のエラー") %> が発生しました:</h3>
+      <ul>
+        <% @room.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="room-new-form">
+    <div class="room-field">
+      <%= f.label :name, "施設名" %><br>
+      <%= f.text_field :name, class: 'room-form-control'  %>
+    </div>
+  
+    <div class="room-field">
+      <%= f.label :description, "紹介文"  %><br>
+      <%= f.text_area :description, class: 'room-form-control'  %>
+    </div>
+  
+    <div class="room-field">
+      <%= f.label :price_per_night, "宿泊料金（/日）"  %><br>
+      <%= f.number_field :price_per_night, class: 'room-form-control'  %>
+    </div>
+  
+    <div class="room-field">
+      <%= f.label :address, "住所"  %><br>
+      <%= f.text_field :address, class: 'room-form-control'  %>
+    </div>
+  
+    <div class="room-field">
+      <%= f.label :room_image, "施設画像"  %><br>
+      <%= f.file_field :room_image, class: 'room-form-control'  %>
+    </div>
+  
+    <div class="room-actions">
+      <%= f.submit '施設を作成' %>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="room-index-link">
+    <%= link_to '施設一覧に戻る', rooms_path %>
+  </div>
+</div>
+

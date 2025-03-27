@@ -1,0 +1,35 @@
+<h1 class="reservation-title">あなたの予約済み施設の一覧</h1>
+
+<div class="reservations-table-container">
+  <table class="reservations-table">
+    <thead>
+      <tr>
+        <th>施設画像</th>
+        <th>施設名</th>
+        <th>チェックイン日</th>
+        <th>チェックアウト日</th>
+        <th>合計料金</th>
+        <th>予約日時</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr class="reservation-row">
+          <td class="room-image">
+            <% if reservation.room.room_image.attached? %>
+              <%= image_tag reservation.room.room_image, class: 'my_reservations_thumbnail-img' %>
+            <% else %>
+              <%= image_tag('default-image.png', class: 'my_reservations_thumbnail-img') %>
+
+            <% end %>
+          </td>
+          <td class="room-name"><%= reservation.room.name %></td>
+          <td class="check-in"><%= reservation.check_in.strftime('%Y-%m-%d') %></td>
+          <td class="check-out"><%= reservation.check_out.strftime('%Y-%m-%d') %></td>
+          <td class="total-price">¥<%= number_with_delimiter(reservation.total_price.to_i) %></td>
+          <td class="created-at"><%= reservation.created_at.strftime('%Y-%m-%d %H:%M') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
