@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_room, only: [:new, :create]
-  
+
   def new
     @reservation = Reservation.new
   end
@@ -34,5 +34,4 @@ class ReservationsController < ApplicationController
   def reservation_params
     params.require(:reservation).permit(:check_in, :check_out, :number_of_guests)
   end
-
 end

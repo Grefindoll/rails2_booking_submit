@@ -45,9 +45,6 @@
 }
 
 
-
-
-
 // ここから全てのユーザーが登録した施設一覧
 // index.html.erb
 /* 全施設一覧ページのスタイル */
@@ -67,8 +64,6 @@
   flex: 1;
   min-width: 0;
 }
-
-
 
 .all-rooms-container {
   max-width: 1200px;
@@ -247,12 +242,9 @@
 }
 
 
-
-
 // ここから施設の詳細ページ
 // show.html.erb
 /* 施設詳細ページのスタイル */
-
 .room-detail-container {
   max-width: 1000px;
   margin: 0 auto;

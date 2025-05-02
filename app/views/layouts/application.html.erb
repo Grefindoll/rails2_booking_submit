@@ -20,18 +20,17 @@
             <%= image_tag("logo.png", alt: "ロゴ", class: "header-logo") %>
           <% end %>
         </div>
-        
-    
+
         <!-- ログイン状態に応じて表示する内容 -->
         <div class="navbar-right">
           <ul class="navbar-list">
             <% if user_signed_in? %>
               <% if current_user.profile_image.attached? %>
-                <li class="navbar-item navbar-image">             
+                <li class="navbar-item navbar-image">
                 <%= image_tag current_user.profile_image %>
                 </li>
               <% end %>
-              
+
               <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
                   <li class="navbar-item">
@@ -71,7 +70,6 @@
                   </a>
                 </div>
               </div>
-              
             <% else %>
               <li class="navbar-item">
                 <%= link_to "ログイン", new_user_session_path, class: "login-link" %>

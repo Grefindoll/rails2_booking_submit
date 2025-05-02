@@ -5,13 +5,10 @@
 @import "rooms";
 @import "reservations";
 
-
 /* グローバルスタイルにフォントを設定 */
 body {
   font-family: 'Arial', 'Meiryo', 'Yu Gothic', sans-serif;
 }
-
-
 
 /* ヘッダーのスタイル */
 header {
@@ -31,8 +28,6 @@ header {
   align-items: center; /* 垂直方向の中央揃え */
   width: 100%; /* ナビゲーションバーの幅を最大化 */
 }
-
-
 
 /* ナビゲーションアイテムのスタイル */
 .navbar-image img  {
@@ -132,7 +127,6 @@ header {
   background-color: #007B9E; /* ホバー時の背景色 */
 }
 
-
 .nasi {
   color: rgb(32, 32, 32);
   font-size: 12px;
@@ -140,13 +134,7 @@ header {
 }
 
 
-
-
-
-
-
 // ここからフッターのスタイル
-
 footer {
   background-color: #333; /* ヘッダーの背景色 */
   color: white; /* ヘッダーのテキスト色 */

@@ -23,4 +23,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :bio, :profile_image,)
   end
 end
-
