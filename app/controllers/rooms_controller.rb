@@ -3,7 +3,6 @@ class RoomsController < ApplicationController
   before_action :set_room, only: [:show]
 
   def index
-    # @rooms = Room.all
     @q = Room.ransack(params[:q])
     @rooms = @q.result(distinct: true)
   end
@@ -13,6 +12,7 @@ class RoomsController < ApplicationController
   end
 
   def show
+    # @room は set_room で取得済み。追加の表示ロジックはなし。
   end
 
   def new
@@ -28,7 +28,6 @@ class RoomsController < ApplicationController
       render :new
     end
   end
-
 
   private
 
