@@ -16,19 +16,26 @@ class Reservation < ApplicationRecord
   private
 
   def check_in_is_today_or_after
-    if check_in.present? && check_in < Date.today
+    if check_in.present? && check_in.to_date < Date.today
       errors.add(:check_in, "は本日以降の日付でなければなりません")
     end
   end
 
   def check_out_is_after_check_in
-    if check_out.present? && check_out <= check_in
+    if check_in.present? && check_out.present? && check_out <= check_in
       errors.add(:check_out, "はチェックイン日より後の日付でなければなりません")
     end
   end
 
   def calculate_total_price
+    # check_in, check_out, number_of_guests, room が存在することをまず確認
+    return unless check_in.present? && check_out.present? && number_of_guests.present? && room.present?
+
     nights = (check_out.to_date - check_in.to_date).to_i
-    self.total_price = nights * number_of_guests * room.price_per_night
+    # 泊数が負や0の場合の考慮（バリデーションで防がれる想定だが、コールバックでも安全に）
+    nights = 0 if nights < 0 # 例: 0泊なら合計金額も0
+
+    # room.price_per_night が nil の場合でも .to_i で 0 になる
+    self.total_price = nights * number_of_guests * room.price_per_night.to_i
   end
 end

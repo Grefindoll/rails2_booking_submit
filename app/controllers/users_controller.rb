@@ -13,8 +13,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user)
+    if @user.update(user_params)
+      # flash[:notice] = "プロフィールを更新しました。" # 必要であればflashメッセージを設定
+      redirect_to user_path(@user)
+    else
+      # バリデーションエラーの場合、編集ページを再描画
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

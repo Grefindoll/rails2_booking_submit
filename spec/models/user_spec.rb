@@ -50,4 +50,46 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_valid
     end
   end
+
+  describe 'アソシエーション' do
+    # テストデータの準備 (アソシエーションテストではDBに保存されたデータが必要なことが多い)
+    let!(:user) { create(:user) }
+    let!(:room) { create(:room, user: user) }
+    let!(:reservation) { create(:reservation, user: user, room: room) }
+
+    context 'Room モデルとの関連' do
+      it '複数の Room を持つことができる (has_many)' do
+        # user.rooms で関連する Room の配列が取得でき、作成した room が含まれることを確認
+        expect(user.rooms).to include(room)
+        # 新しい Room を追加しても user.rooms に含まれることを確認
+        new_room = create(:room, user: user)
+        expect(user.rooms).to include(new_room)
+      end
+
+      it 'User が削除された場合、関連する Room も削除されること (dependent: :destroy)' do
+        # change マッチャーを使って、user.destroy の前後で Room.count が 1 減ることを確認
+        expect { user.destroy }.to change { Room.count }.by(-1)
+      end
+    end
+
+    context 'Reservation モデルとの関連' do
+      it '複数の Reservation を持つことができる (has_many)' do
+        expect(user.reservations).to include(reservation)
+        new_reservation = create(:reservation, user: user, room: room)
+        expect(user.reservations).to include(new_reservation)
+      end
+
+      it 'User が削除された場合、関連する Reservation も削除されること (dependent: :destroy)' do
+        expect { user.destroy }.to change { Reservation.count }.by(-1)
+      end
+    end
+
+    context 'ProfileImage との関連 (Active Storage)' do
+      it 'profile_image メソッドを持つこと (has_one_attached)' do
+        # respond_to マッチャーを使って、インスタンスがメソッドを持っているか確認
+        expect(user).to respond_to(:profile_image)
+      end
+      # 実際にファイルがattachできるかなどはSystem Spec等でテストします
+    end
+  end
 end
