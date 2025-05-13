@@ -27,49 +27,35 @@
             <% if user_signed_in? %>
               <% if current_user.profile_image.attached? %>
                 <li class="navbar-item navbar-image">
-                <%= image_tag current_user.profile_image %>
+                  <%= image_tag current_user.profile_image %>
                 </li>
               <% end %>
 
-              <div class="dropdown">
+              <li class="navbar-item dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                  <li class="navbar-item">
-                    <%= link_to "#{current_user.name}さん", root_path, class: "nav-user-name" %>
-                  </li>
+                  <%= current_user.name %>さん
                 </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= link_to "施設の新規登録", new_room_path, class: "nasi" %>
-                    </li>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= link_to "予約済み一覧", my_reservations_path, class: "nasi" %>
-                    </li>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= link_to "登録済み一覧", my_rooms_path, class: "nasi" %>
-                    </li>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= link_to "アカウントの編集", edit_user_registration_path, class: "nasi" %>
-                    </li>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= link_to "プロフィールの詳細", user_path(current_user), class: "nasi" %>
-                    </li>
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    <li class="navbar-item">
-                      <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-button" %>
-                    </li>
-                  </a>
-                </div>
-              </div>
+                <ul class="dropdown-menu">
+                  <li class="dropdown-item">
+                    <%= link_to "施設の新規登録", new_room_path, class: "nasi" %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "予約済み一覧", my_reservations_path, class: "nasi" %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "登録済み一覧", my_rooms_path, class: "nasi" %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "アカウントの編集", edit_user_registration_path, class: "nasi" %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= link_to "プロフィールの詳細", user_path(current_user), class: "nasi" %>
+                  </li>
+                  <li class="dropdown-item">
+                    <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout-button" %>
+                  </li>
+                </ul>
+              </li>
             <% else %>
               <li class="navbar-item">
                 <%= link_to "ログイン", new_user_session_path, class: "login-link" %>
