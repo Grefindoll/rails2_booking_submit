@@ -1,0 +1,53 @@
+<section>
+  <div class="top">
+    <h1 class="top-title">Potepan Shareで<br>まだ体験したことのない<br>旅をしよう</h1>
+    <div class="top-rooms">
+      <%= search_form_for @q, url: rooms_path, method: :get do |f| %>
+        <div>
+          <%= f.search_field :address_cont, placeholder: "エリア名を入力", class: "top-rooms-search-input" %>
+        </div>
+        <div>
+          <%= f.submit "検索" , class: "top-rooms-search-btn" %>
+        </div>
+      <% end %>
+
+
+      <%= link_to "全ての施設一覧", rooms_path, class: "top-rooms-link" %>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="top-recomend-title">
+    <h2>おすすめのエリア</h2>
+  </div>
+  <div class="top-recomend">
+    <%= link_to rooms_path(q: { address_cont: '東京都' }) do %>
+      <div class="top-recomend-city tokyo">
+        <p class="ja">東京</p>
+        <p class="en"><i class="fa-solid fa-location-dot"></i> Tokyo</p>
+      </div>
+    <% end %>
+    
+    <%= link_to rooms_path(q: { address_cont: '大阪府' }) do %>
+      <div class="top-recomend-city osaka">
+        <p class="ja">大阪</p>
+        <p class="en"><i class="fa-solid fa-location-dot"></i> Osaka</p>
+      </div>
+    <% end %>
+    
+    <%= link_to rooms_path(q: { address_cont: '京都府' }) do %>
+      <div class="top-recomend-city kyoto">
+        <p class="ja">京都</p>
+        <p class="en"><i class="fa-solid fa-location-dot"></i> Kyoto</p>
+      </div>
+    <% end %>
+    
+    <%= link_to rooms_path(q: { address_cont: '札幌市' }) do %>
+      <div class="top-recomend-city sapporo">
+        <p class="ja">札幌</p>
+        <p class="en"><i class="fa-solid fa-location-dot"></i> Sapporo</p>
+      </div>
+    <% end %>
+  </div>
+</section>

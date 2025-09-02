@@ -1,0 +1,24 @@
+<div class="reservation-form-container">
+  <h1 class="reservation-form-title"><%= @room.name %>さんの予約</h1>
+
+  <%= form_with(model: @reservation, url: room_reservations_path(@room), local: true, html: { class: "reservation-form" }) do |form| %>
+    <div class="reservation-form-field">
+      <%= form.label :check_in, 'チェックイン日', class: "reservation-form-label" %>
+      <%= form.datetime_local_field :check_in, class: "reservation-form-input" %>
+    </div>
+
+    <div class="reservation-form-field">
+      <%= form.label :check_out, 'チェックアウト日', class: "reservation-form-label" %>
+      <%= form.datetime_local_field :check_out, class: "reservation-form-input" %>
+    </div>
+
+    <div class="reservation-form-field">
+      <%= form.label :number_of_guests, '人数', class: "reservation-form-label" %>
+      <%= form.number_field :number_of_guests, class: "reservation-form-input" %>
+    </div>
+
+    <div class="reservation-form-actions">
+      <%= form.submit '予約する', class: "reservation-submit-button" %>
+    </div>
+  <% end %>
+</div>

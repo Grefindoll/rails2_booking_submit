@@ -1,0 +1,39 @@
+<div class="confirmation-container">
+  <h1 class="confirmation-title">予約が完了しました。</h1>
+  
+  <div class="confirmation-details">
+    <div class="confirmation-item">
+      <span class="confirmation-label">施設名:</span>
+      <span class="confirmation-value"><%= @reservation.room.name %></span>
+    </div>
+    
+    <div class="confirmation-item">
+      <span class="confirmation-label">チェックイン日:</span>
+      <span class="confirmation-value"><%= @reservation.check_in.strftime('%Y-%m-%d %H:%M') %></span>
+    </div>
+    
+    <div class="confirmation-item">
+      <span class="confirmation-label">チェックアウト日:</span>
+      <span class="confirmation-value"><%= @reservation.check_out.strftime('%Y-%m-%d %H:%M') %></span>
+    </div>
+    
+    <div class="confirmation-item">
+      <span class="confirmation-label">宿泊日数:</span>
+      <span class="confirmation-value"><%= (@reservation.check_out.to_date - @reservation.check_in.to_date).to_i %> 日</span>
+    </div>
+    
+    <div class="confirmation-item">
+      <span class="confirmation-label">人数:</span>
+      <span class="confirmation-value"><%= @reservation.number_of_guests %> 人</span>
+    </div>
+    
+    <div class="confirmation-item confirmation-highlight">
+      <span class="confirmation-label">支払い金額:</span>
+      <span class="confirmation-value">¥<%= number_with_delimiter(@reservation.total_price.to_i) %></span>
+    </div>
+  </div>
+  
+  <div class="confirmation-actions">
+    <%= link_to '全ての予約済み施設を確認する', my_reservations_path, class: "confirmation-button" %>
+  </div>
+</div>

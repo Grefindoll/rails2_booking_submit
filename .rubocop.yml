@@ -1,0 +1,39 @@
+plugins:
+  - rubocop-rails       # Railsに特化したチェックを行う
+  - rubocop-performance # パフォーマンスに関するルール
+  - rubocop-rspec       # RSpecに特化したチェックを行う
+  - rubocop-airbnb      # Airbnb スタイルガイドに基づくルール
+  - rubocop-capybara    # Capybara (System Spec) に関するルール
+
+# 全ての Cop (ルール) に対する共通設定
+AllCops:
+  # 対象とする Ruby のバージョンを指定します
+  TargetRubyVersion: 3.3 # ご自身のプロジェクトの Ruby バージョンに合わせてください
+
+  # 新しく追加された Cop (ルール) をデフォルトで有効にします (推奨)
+  NewCops: enable
+
+  # RuboCop のチェック対象から除外するファイルやディレクトリを指定します
+  Exclude:
+    - 'db/schema.rb'        # 自動生成されるファイル
+    - 'db/migrate/*'        # マイグレーションファイル
+    - 'bin/*'               # Rails が提供するスクリプト
+    - 'config/**/*'         # 設定ファイル
+    - 'node_modules/**/*'   # npm でインストールされるライブラリ
+    - 'tmp/**/*'            # 一時ファイル
+    - 'vendor/**/*'         # 外部ライブラリ
+
+# Rails プロジェクト向けの Cop を有効にします
+Rails:
+  Enabled: true
+
+# RSpec プロジェクト向けの Cop を有効にします
+RSpec:
+  Enabled: true
+
+# 必要に応じて、特定の Cop (ルール) の設定を上書きしたり、無効化したりします
+# 例: テストファイル (`spec` ディレクトリ以下) ではブロックの行数制限 (BlockLength) を緩める
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+    

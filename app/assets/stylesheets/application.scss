@@ -1,0 +1,146 @@
+@import "devise";
+@import "reservations";
+@import "reset";
+@import "rooms";
+@import "top";
+@import "users";
+
+/* グローバルスタイルにフォントを設定 */
+body {
+  font-family: 'Arial', 'Meiryo', 'Yu Gothic', sans-serif;
+}
+
+/* ヘッダーのスタイル */
+header {
+  background-color: #333; /* ヘッダーの背景色 */
+  color: white; /* ヘッダーのテキスト色 */
+  padding: 0 20px; /* ヘッダーの内側の余白 */
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ナビゲーションバーのスタイル */
+.navbar {
+  display: flex;
+  justify-content: space-between; /* 左右に要素を分ける */
+  align-items: center; /* 垂直方向の中央揃え */
+  width: 100%; /* ナビゲーションバーの幅を最大化 */
+}
+
+/* ナビゲーションアイテムのスタイル */
+.navbar-image img  {
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+}
+
+.navbar-image  {
+  height: 40px;
+}
+
+.navbar-item {
+  display: inline-block;
+  align-items: center;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+.navbar-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* ロゴリンクのスタイル */
+.logo-link {
+  display: inline-block;
+}
+
+/* ヘッダーロゴのスタイル */
+.header-logo {
+  height: 40px; /* ロゴの高さ */
+  width: auto; /* ロゴの幅を自動調整 */
+}
+
+// ユーザーの名前のスタイル
+.nav-user-name {
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex; /* 追加 */
+  align-items: center; /* 追加 */
+  padding: 8px 16px 8px 0;
+}
+
+.user-link:hover {
+  background-color: #555; /* ホバー時の背景色 */
+}
+
+/* ログアウトボタンのスタイル */
+.logout-button {
+  background-color: #ff4d4d; /* ボタンの背景色 */
+  color: white; /* ボタンのテキスト色 */
+  border: none;
+  padding: 8px 16px;
+  margin-top: 12px;
+  cursor: pointer;
+  border-radius: 4px; /* ボタンの角を丸くする */
+}
+
+.logout-button:hover {
+  background-color: #cc0000; /* ホバー時の背景色 */
+}
+
+/* 新規登録リンクのスタイル */
+.signup-link {
+  color: white; /* リンクのテキスト色 */
+  text-decoration: none; /* リンクの下線を削除 */
+  padding: 8px 16px;
+  border-radius: 4px; /* リンクの角を丸くする */
+  background-color: #4CAF50; /* リンクの背景色 */
+}
+
+.signup-link:hover {
+  background-color: #45a049; /* ホバー時の背景色 */
+}
+
+/* ログインリンクのスタイル */
+.login-link {
+  color: white; /* リンクのテキスト色 */
+  text-decoration: none; /* リンクの下線を削除 */
+  padding: 8px 16px;
+  border-radius: 4px; /* リンクの角を丸くする */
+  background-color: #008CBA; /* リンクの背景色 */
+}
+
+.login-link:hover {
+  background-color: #007B9E; /* ホバー時の背景色 */
+}
+
+.nasi {
+  color: rgb(32, 32, 32);
+  font-size: 12px;
+  margin-left: 20px;
+}
+
+
+// ここからフッターのスタイル
+footer {
+  background-color: #333; /* ヘッダーの背景色 */
+  color: white; /* ヘッダーのテキスト色 */
+  padding: 10px 20px; /* ヘッダーの内側の余白 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	height: 200px;
+}

@@ -1,0 +1,21 @@
+<h1 class="user-rooms-title">あなたが登録した施設一覧</h1>
+
+<div class="user-rooms-container">
+  <% @user_rooms.each do |room| %>
+    <div class="room-card">
+      <div class="room-image">
+        <% if room.room_image.attached? %>
+          <%= image_tag room.room_image, class: "user-room-thumbnail" %>
+        <% else %>
+          <%= image_tag("default-image.png", class: "user-room-thumbnail") %>
+        <% end %>
+      </div>
+
+      <div class="room-content">
+        <h3 class="room-name"><%= link_to room.name, room_path(room) %></h3>
+        <p class="room-description"><%= room.description %></p>
+        <p class="room-author">投稿者: <%= room.user.email %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
